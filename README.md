@@ -4,7 +4,6 @@ Clone this project
 
     git clone https://github.com/a3gz/docker-lamp.git
 
-
 ## docker-compose.yml
 
 Some settings in `docker-compose.yml` need to be changed to prevent conflicts with existing Docker containers.
