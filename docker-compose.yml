@@ -1,0 +1,41 @@
+version: '3.2'
+services:
+  myproject-app:
+    container_name: myproject
+    restart: always
+    build: .
+    ports:
+      - 4114:80
+    depends_on:
+      - mysql
+    networks:
+      - myproject-app
+    volumes:
+      - .:/var/www/html
+      # Prevent the vendor directory from being overridden by the volume mount
+      - /var/www/html/vendor
+  mysql:
+    container_name: myproject-mysql
+    #image: mysql:5.7.19
+    image: mysql:5.6.43
+    # command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      - ../db5.6:/var/lib/mysql
+    networks:
+      - myproject-app
+  adminer:
+    container_name: myproject-dbadmin
+    image: adminer
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - 4224:8080
+    networks:
+      - myproject-app
+networks:
+  myproject-app:
