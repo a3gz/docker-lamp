@@ -9,7 +9,7 @@ services:
     depends_on:
       - mysql
     networks:
-      - myproject-app
+      - myproject-network
     volumes:
       - .:/var/www/html
       # Prevent the vendor directory from being overridden by the volume mount
@@ -24,9 +24,9 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
     volumes:
-      - ../db5.6:/var/lib/mysql
+      - ./__mysql-data:/var/lib/mysql
     networks:
-      - myproject-app
+      - myproject-network
   adminer:
     container_name: myproject-dbadmin
     image: adminer
@@ -36,6 +36,6 @@ services:
     ports:
       - 4224:8080
     networks:
-      - myproject-app
+      - myproject-network
 networks:
-  myproject-app:
+  myproject-network:
