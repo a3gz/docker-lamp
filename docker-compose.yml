@@ -12,6 +12,7 @@ services:
       - myproject-network
     volumes:
       - .:/var/www/html
+
   mysql:
     container_name: myproject-mysql
     image: mysql:5.7.23
@@ -23,6 +24,7 @@ services:
       - ./__mysql-data:/var/lib/mysql
     networks:
       - myproject-network
+
   adminer:
     container_name: myproject-dbadmin
     image: adminer
