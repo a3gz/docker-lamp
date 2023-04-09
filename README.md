@@ -36,9 +36,14 @@ Change `4224` for whatever port suits your needs.
 
 Make sure you are inside the project's directory, from there run:
 
-    docker-compose up --build -d
+    docker compose up --build -d
 
 You are all set; open your browser and navigate to the following URL, changing `4114` with the port you used before.
 
     localhost:4114
 
+### Run bash
+
+To run bash in interactive mode to manage your container, make sure your are inside the project's directory then run:
+
+    docker container exec -it myproject bash
