@@ -1,4 +1,5 @@
 {
   "name": "domain/myproject",
-  "description": "My project"
+  "description": "My project",
+  "minimum-stability": "dev"
 }
